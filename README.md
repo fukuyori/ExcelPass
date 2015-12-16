@@ -22,6 +22,8 @@ Workplace security has become important. It is required to set a password for th
 - Launch ExcelPass
 - Drag and drop files
 
+![screenshot](https://pbs.twimg.com/media/CWVgL-BUsAA20H8.jpg)
+
 ## Licence
 
 Copyright (c) 2015 Sanda Systems
