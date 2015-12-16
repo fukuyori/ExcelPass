@@ -34,8 +34,9 @@ namespace WindowsFormsApplication1 {
 #endif
 #if (PDF)
         iTextSharp.text.pdf.PdfReader pdfReader;
+        iTextSharp.text.pdf.PdfCopy pdfCopy;
         iTextSharp.text.Document pdfDoc;
-        iTextSharp.text.pdf.PdfWriter pdfWriter;
+        FileStream os;
 #endif
 
         Boolean isExcel = false;
@@ -143,32 +144,36 @@ namespace WindowsFormsApplication1 {
             // オブジェクトの開放
 #if (EXCEL)
             if (isExcel) {
-                if (xlBook != null) xlBook = null;
+                if (xlBook != null)
+                    xlBook = null;
                 xlApp.Quit();
             }
 #endif
 #if (WORD)
             if (isWord) {
-                if (docDocs != null) docDocs = null;
-                ((Microsoft.Office.Interop.Word._Application)docApp).Quit(); ;
+                if (docDocs != null)
+                    docDocs = null;
+                ((Microsoft.Office.Interop.Word._Application)docApp).Quit();
+                ;
             }
 #endif
 #if (POWERPOINT)
             if (isPowerPoint) {
-                if (pptPres != null) pptPres = null;
+                if (pptPres != null)
+                    pptPres = null;
                 pptApp.Quit();
             }
 #endif
 #if (PDF)
             if (isPdf) {
                 try {
-                    pdfDoc.Close();
-                    pdfReader.Close();
-                    pdfWriter.Close();
+                    pdfReader.Dispose();
+                    pdfDoc.Dispose();
+                    pdfCopy.Dispose();
                 } catch {
-                    pdfDoc = null;
                     pdfReader = null;
-                    pdfWriter = null;
+                    pdfDoc = null;
+                    pdfCopy = null;
                 }
             }
 #endif
@@ -219,8 +224,10 @@ namespace WindowsFormsApplication1 {
                             xlBooks.Close();
                             return;
                         }
-                        if (textBox1.Text.Length > 0) xlBook.Password = r_password;
-                        if (textBox2.Text.Length > 0) xlBook.WritePassword = w_password;
+                        if (textBox1.Text.Length > 0)
+                            xlBook.Password = r_password;
+                        if (textBox2.Text.Length > 0)
+                            xlBook.WritePassword = w_password;
                         xlBook.CheckCompatibility = false;
                         try {
                             xlBook.Save();
@@ -257,8 +264,10 @@ namespace WindowsFormsApplication1 {
                             docDoc = null;
                             return;
                         }
-                        if (textBox1.Text.Length > 0) docDoc.Password = r_password;
-                        if (textBox2.Text.Length > 0) docDoc.WritePassword = w_password;
+                        if (textBox1.Text.Length > 0)
+                            docDoc.Password = r_password;
+                        if (textBox2.Text.Length > 0)
+                            docDoc.WritePassword = w_password;
                         try {
                             docDoc.Save();
                         } catch (Exception eX) {
@@ -285,8 +294,10 @@ namespace WindowsFormsApplication1 {
                             return;
                         }
 
-                        if (textBox1.Text.Length > 0) pptPre.Password = r_password;
-                        if (textBox2.Text.Length > 0) pptPre.WritePassword = w_password;
+                        if (textBox1.Text.Length > 0)
+                            pptPre.Password = r_password;
+                        if (textBox2.Text.Length > 0)
+                            pptPre.WritePassword = w_password;
                         try {
                             pptPre.Save();
                         } catch (Exception eX) {
@@ -314,29 +325,29 @@ namespace WindowsFormsApplication1 {
                         }
                         // オーナーパスワードが掛っているかチェック
                         if (pdfReader.IsEncrypted()) {
-                            label2.Text = WindowsFormsApplication1.Properties.Resources.pdf1;
+                            label2.Text = WindowsFormsApplication1.Properties.Resources.pdf2;
                             // "This document has been password-protected.";
                             return;
                         }
                         pdfDoc = new iTextSharp.text.Document(pdfReader.GetPageSize(1));
-                        pdfWriter = PdfWriter.GetInstance(
-                            pdfDoc, new FileStream(tmpFilePath, FileMode.OpenOrCreate));
+                        os = new FileStream(tmpFilePath, FileMode.OpenOrCreate);
+                        pdfCopy = new PdfCopy(pdfDoc, os);
                         // 出力ファイルにパスワード設定
                         // rp:ユーザーパスワード
                         // wp:オーナーパスワード（空の場合はユーザーパスワードと同じ値を設定）
-                        pdfWriter.Open();
+
+                        pdfCopy.Open();
                         if (r_password.Length == 0)
                             rp = null;
                         else
                             rp = r_password;
                         if (w_password.Length == 0) {
                             wp = r_password;
-                            pdfWriter.SetEncryption(
-                                PdfWriter.STRENGTH128BITS, rp, wp,
-                                PdfWriter.markAll);
+                            pdfCopy.SetEncryption(
+                                PdfCopy.STRENGTH128BITS, rp, wp,
+                                PdfCopy.markAll);
                         } else {
                             wp = w_password;
-                            // オーナーパスワードが設定された時、印刷とアクセシビリティのための内容抽出のみ許可
                             // AllowPrinting 	印刷
                             // AllowCopy 	内容のコピーと抽出
                             // AllowModifyContents 	文書の変更
@@ -344,33 +355,23 @@ namespace WindowsFormsApplication1 {
                             // AllowFillIn 	フォーム・フィールドの入力と署名
                             // AllowScreenReaders 	アクセシビリティのための内容抽出
                             // AllowAssembly 	文書アセンブリ
-                            pdfWriter.SetEncryption(
-                                PdfWriter.STRENGTH128BITS, rp, wp,
-                                PdfWriter.AllowScreenReaders | PdfWriter.AllowPrinting);
+                            pdfCopy.SetEncryption(
+                                PdfCopy.STRENGTH128BITS, rp, wp,
+                                PdfCopy.AllowScreenReaders | PdfCopy.AllowPrinting);
                         }
                         // 出力ファイルDocumentを開く
                         pdfDoc.Open();
                         // アップロードPDFファイルの内容を出力ファイルに書き込む
-                        PdfContentByte content = pdfWriter.DirectContent;
-                        for (int i = 1; i <= pdfReader.NumberOfPages; i++) {
-                            pdfDoc.NewPage();
-                            PdfImportedPage pipPage = pdfWriter.GetImportedPage(pdfReader, i);
-                            content.AddTemplate(pipPage, 0, 0);
-                        }
+                        pdfCopy.AddDocument(pdfReader);
+
                         // 出力ファイルDocumentを閉じる
                         pdfDoc.Close();
-                        pdfWriter.Close();
-                        pdfDoc.Close();
+                        pdfCopy.Close();
+                        os.Close();
                         pdfReader.Close();
                         // オリジナルファイルと一時ファイルを置き換える
-                        try {
-                            System.IO.File.Copy(tmpFilePath,
-                                dataGridView1.Rows[0].Cells[3].Value.ToString(), true);
-                            System.IO.File.Delete(tmpFilePath);
-                        } catch (Exception eX) {
-                            label2.Text = WindowsFormsApplication1.Properties.Resources.error1 + eX.Message;
-                            // "Saving failed." + eX.Message;
-                        }
+                        File.Delete(dataGridView1.Rows[0].Cells[3].Value.ToString());
+                        File.Move(tmpFilePath, dataGridView1.Rows[0].Cells[3].Value.ToString());
                     }
 #endif
                     dataGridView1.Rows.RemoveAt(0);
@@ -408,32 +409,36 @@ namespace WindowsFormsApplication1 {
 
 #if (EXCEL)
             if (isExcel) {
-                if (xlBook != null) xlBook = null;
+                if (xlBook != null)
+                    xlBook = null;
                 xlApp.Quit();
             }
 #endif
 #if (WORD)
             if (isWord) {
-                if (docDocs != null) docDocs = null;
-                ((Microsoft.Office.Interop.Word._Application)docApp).Quit(); ;
+                if (docDocs != null)
+                    docDocs = null;
+                ((Microsoft.Office.Interop.Word._Application)docApp).Quit();
+                ;
             }
 #endif
 #if (POWERPOINT)
             if (isPowerPoint) {
-                if (pptPres != null) pptPres = null;
+                if (pptPres != null)
+                    pptPres = null;
                 pptApp.Quit();
             }
 #endif
 #if (PDF)
             if (isPdf) {
                 try {
-                    pdfDoc.Close();
-                    pdfReader.Close();
-                    pdfWriter.Close();
+                    pdfReader.Dispose();
+                    pdfDoc.Dispose();
+                    pdfCopy.Dispose();
                 } catch {
-                    pdfDoc = null;
                     pdfReader = null;
-                    pdfWriter = null;
+                    pdfDoc = null;
+                    pdfCopy = null;
                 }
             }
 #endif
@@ -636,7 +641,6 @@ namespace WindowsFormsApplication1 {
                             return;
                         }
 
-                        // オーナーパスワードが入力されていない時は、ユーザーパスワードを使用
                         rp = (r_password.Length == 0) ? null : r_password;
                         wp = (w_password.Length == 0) ? r_password : w_password;
 
@@ -649,18 +653,15 @@ namespace WindowsFormsApplication1 {
                         }
 
                         pdfDoc = new iTextSharp.text.Document(pdfReader.GetPageSize(1));
-                        pdfWriter = PdfWriter.GetInstance(
-                            pdfDoc, new FileStream(tmpFilePath, FileMode.OpenOrCreate));
-                        pdfWriter.Open();
+                        os = new FileStream(tmpFilePath, FileMode.OpenOrCreate);
+                        pdfCopy = new PdfCopy(pdfDoc, os);
+                        pdfCopy.Open();
+
                         pdfDoc.Open();
-                        PdfContentByte content = pdfWriter.DirectContent;
-                        for (int i = 1; i <= pdfReader.NumberOfPages; i++) {
-                            pdfDoc.NewPage();
-                            PdfImportedPage pipPage = pdfWriter.GetImportedPage(pdfReader, i);
-                            content.AddTemplate(pipPage, 0, 0);
-                        }
+                        pdfCopy.AddDocument(pdfReader);
+
                         pdfDoc.Close();
-                        pdfWriter.Close();
+                        pdfCopy.Close();
                         pdfReader.Close();
                         pdfReader.Dispose();
                         // オリジナルファイルと一時ファイルを置き換える
@@ -687,7 +688,8 @@ namespace WindowsFormsApplication1 {
         //
         private void dataGridView1_DragDrop(object sender, DragEventArgs e) {
             // ファイルが渡されていなければ、何もしない
-            if (!e.Data.GetDataPresent(DataFormats.FileDrop)) return;
+            if (!e.Data.GetDataPresent(DataFormats.FileDrop))
+                return;
 
             foreach (var filePath in (string[])e.Data.GetData(DataFormats.FileDrop)) {
                 addDataGridView(filePath);
@@ -715,7 +717,8 @@ namespace WindowsFormsApplication1 {
                     break;
                 }
             }
-            if (SAMEFILE) return; // 同じファイルが登録済みなら、追加しない
+            if (SAMEFILE)
+                return; // 同じファイルが登録済みなら、追加しない
 #if (EXCEL)
             // Excel
             if (isExcel & (filePath.Substring(filePath.Length - 3) == "xls" | filePath.Substring(filePath.Length - 4, 3) == "xls")) {
@@ -803,7 +806,7 @@ namespace WindowsFormsApplication1 {
         private void createPasswordToolStripMenuItem1_Click(object sender, EventArgs e) {
             textBox1.Text = createPassword(10);
         }
-        
+
         //
         // ToolsStripMenu 2
         //
@@ -855,11 +858,5 @@ namespace WindowsFormsApplication1 {
         private void clearAllToolStripMenuItem_Click(object sender, EventArgs e) {
             deleteAllDataGridView();
         }
-
-
-
-
-
-
     }
 }
