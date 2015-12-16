@@ -23,10 +23,11 @@ Workplace security has become important. It is required to set a password for th
 - Drag and drop files
 
 ## Licence
+```
 Copyright (c) 2015 Sanda Systems
 Released under the MIT license
 http://opensource.org/licenses/mit-license.php
-
+```
 ## Author
 
 [fukuyori](https://github.com/fukuyori)
