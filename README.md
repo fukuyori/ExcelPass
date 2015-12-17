@@ -30,7 +30,7 @@ Copyright (c) 2015 Sanda Systems
 - [Released under the MIT license](https://opensource.org/licenses/MIT)
 
 [iTextSharp](http://sourceforge.net/projects/itextsharp/)
-- [Affero GNU Public License](http://sourceforge.net/directory/license:osi-approved-open-source/affero-gnu-public-license/)
+- [Affero GNU Public License](http://sourceforge.net/directory/os:windows/license:osi-approved-open-source/affero-gnu-public-license/)
 
 ## Author
 
