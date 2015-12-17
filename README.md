@@ -27,8 +27,11 @@ Workplace security has become important. It is required to set a password for th
 ## Licence
 
 Copyright (c) 2015 Sanda Systems
-Released under the MIT license
+- Released under the MIT license
 http://opensource.org/licenses/mit-license.php
+
+![iTextSharp](http://sourceforge.net/projects/itextsharp/)
+- ![Affero GNU Public License](http://sourceforge.net/directory/license:osi-approved-open-source/affero-gnu-public-license/)
 
 ## Author
 
