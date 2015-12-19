@@ -7,11 +7,7 @@ using System;
 using System.IO;
 using System.Drawing;
 using System.Windows.Forms;
-using Microsoft.Office.Interop.Excel;
-using Microsoft.Office.Interop.Word;
-using Microsoft.Office.Interop.PowerPoint;
 using Microsoft.Office.Core;
-using iTextSharp.text;
 using iTextSharp.text.pdf;
 
 namespace WindowsFormsApplication1 {
@@ -39,6 +35,10 @@ namespace WindowsFormsApplication1 {
         FileStream os;
 #endif
 
+        Boolean avaExcel = false;
+        Boolean avaWord = false;
+        Boolean avaPoawrPoint = false;
+        Boolean avaPdf = false;
         Boolean isExcel = false;
         Boolean isWord = false;
         Boolean isPowerPoint = false;
@@ -57,24 +57,24 @@ namespace WindowsFormsApplication1 {
             // Excel, Word, PowerPointがインストールされているかチェック
 #if (EXCEL)
             if (Type.GetTypeFromProgID("Excel.Application") != null) {
-                isExcel = true;
+                avaExcel = true;
                 Pic_Excel.Visible = true;
             }
 #endif
 #if (WORD)
             if (Type.GetTypeFromProgID("Word.Application") != null) {
-                isWord = true;
+                avaWord = true;
                 Pic_Word.Visible = true;
             }
 #endif
 #if (POWERPOINT)
             if (Type.GetTypeFromProgID("PowerPoint.Application") != null) {
-                isPowerPoint = true;
+                avaPoawrPoint = true;
                 Pic_PowerPoint.Visible = true;
             }
 #endif
 #if (PDF)
-            isPdf = true;
+            avaPdf = true;
             Pic_Pdf.Visible = true;
 #endif
 
@@ -120,21 +120,24 @@ namespace WindowsFormsApplication1 {
         // 施錠開始
         //
         private void button1_Click(object sender, EventArgs e) {
+            // 必要なオブジェクトのチェック
+            checkType();
+
             // オブジェクトの割り付け
 #if (EXCEL)
-            if (isExcel) {
+            if (avaExcel && isExcel) {
                 xlApp = new Microsoft.Office.Interop.Excel.Application();
                 xlBooks = xlApp.Workbooks;
             }
 #endif
 #if (WORD)
-            if (isWord) {
+            if (avaWord && isWord) {
                 docApp = new Microsoft.Office.Interop.Word.Application();
                 docDocs = docApp.Documents;
             }
 #endif
 #if (POWERPOINT)
-            if (isPowerPoint) {
+            if (avaPoawrPoint && isPowerPoint) {
                 pptApp = new Microsoft.Office.Interop.PowerPoint.Application();
                 pptPres = pptApp.Presentations;
             }
@@ -143,14 +146,14 @@ namespace WindowsFormsApplication1 {
 
             // オブジェクトの開放
 #if (EXCEL)
-            if (isExcel) {
+            if (avaExcel && isExcel) {
                 if (xlBook != null)
                     xlBook = null;
                 xlApp.Quit();
             }
 #endif
 #if (WORD)
-            if (isWord) {
+            if (avaWord && isWord) {
                 if (docDocs != null)
                     docDocs = null;
                 ((Microsoft.Office.Interop.Word._Application)docApp).Quit();
@@ -158,14 +161,14 @@ namespace WindowsFormsApplication1 {
             }
 #endif
 #if (POWERPOINT)
-            if (isPowerPoint) {
+            if (avaPoawrPoint && isPowerPoint) {
                 if (pptPres != null)
                     pptPres = null;
                 pptApp.Quit();
             }
 #endif
 #if (PDF)
-            if (isPdf) {
+            if (avaPdf && isPdf) {
                 try {
                     pdfReader.Dispose();
                     pdfDoc.Dispose();
@@ -179,6 +182,31 @@ namespace WindowsFormsApplication1 {
 #endif
             // ガベージコレクション
             GC.Collect();
+        }
+
+        // ファイルの種類をチェック
+        private void checkType() {
+            isExcel = false;
+            isWord = false;
+            isPowerPoint = false;
+            isPdf = false;
+
+            for (int i = 0; i < dataGridView1.Rows.Count; i++) {
+                switch (dataGridView1.Rows[i].Cells[2].Value.ToString()) {
+                    case "Excel":
+                        isExcel = true;
+                        break;
+                    case "Word":
+                        isWord = true;
+                        break;
+                    case "PowerPoint":
+                        isPowerPoint = true;
+                        break;
+                    case "PDF":
+                        isPdf = true;
+                        break;
+                }
+            }
         }
 
         // 施錠処理
@@ -202,7 +230,7 @@ namespace WindowsFormsApplication1 {
                     ////////////////////////////////////////////////////////
                     // Excel施錠
                     ////////////////////////////////////////////////////////
-                    if (isExcel & dataGridView1.Rows[0].Cells[2].Value.ToString() == "Excel") {
+                    if (avaExcel & dataGridView1.Rows[0].Cells[2].Value.ToString() == "Excel") {
                         // 読み込みパスワードが設定されているかチェック
                         try {
                             xlBook = xlBooks.Open(dataGridView1.Rows[0].Cells[3].Value.ToString(),
@@ -210,7 +238,7 @@ namespace WindowsFormsApplication1 {
                         } catch {
                             label2.Text = WindowsFormsApplication1.Properties.Resources.excel1;
                             //"This workbook has been read password-protected.";
-                            xlBooks.Close();
+                            // xlBooks.Close();
                             return;
                         }
 
@@ -242,7 +270,7 @@ namespace WindowsFormsApplication1 {
                     //////////////////////////////////////////////////////
                     // Word施錠
                     //////////////////////////////////////////////////////
-                    if (isWord & dataGridView1.Rows[0].Cells[2].Value.ToString() == "Word") {
+                    if (avaWord & dataGridView1.Rows[0].Cells[2].Value.ToString() == "Word") {
                         // 読み込みパスワードが設定されているかチェック
                         try {
                             docDoc = docDocs.Open(dataGridView1.Rows[0].Cells[3].Value.ToString(),
@@ -281,7 +309,7 @@ namespace WindowsFormsApplication1 {
                     ////////////////////////////////////////////////////
                     // PowerPoint施錠
                     ////////////////////////////////////////////////////
-                    if (isPowerPoint & dataGridView1.Rows[0].Cells[2].Value.ToString() == "PowerPoint") {
+                    if (avaPoawrPoint & dataGridView1.Rows[0].Cells[2].Value.ToString() == "PowerPoint") {
                         // パスワードが設定されているかチェック
                         try {
                             pptPre = pptPres.Open(dataGridView1.Rows[0].Cells[3].Value.ToString() + ":: :: ",
@@ -311,7 +339,7 @@ namespace WindowsFormsApplication1 {
                     ////////////////////////////////////////////////////
                     // PDF施錠
                     ////////////////////////////////////////////////////
-                    if (isPdf & dataGridView1.Rows[0].Cells[2].Value.ToString() == "PDF") {
+                    if (avaPdf & dataGridView1.Rows[0].Cells[2].Value.ToString() == "PDF") {
                         // 一時ファイル取得
                         tmpFilePath = Path.GetTempFileName();
 
@@ -386,20 +414,22 @@ namespace WindowsFormsApplication1 {
         // 解錠開始
         //
         private void button3_Click(object sender, EventArgs e) {
+            // 必要なオブジェクトのチェック
+            checkType();
 #if (EXCEL)
-            if (isExcel) {
+            if (avaExcel && isExcel) {
                 xlApp = new Microsoft.Office.Interop.Excel.Application();
                 xlBooks = xlApp.Workbooks;
             }
 #endif
 #if (WORD)
-            if (isWord) {
+            if (avaWord && isWord) {
                 docApp = new Microsoft.Office.Interop.Word.Application();
                 docDocs = docApp.Documents;
             }
 #endif
 #if (POWERPOINT)
-            if (isPowerPoint) {
+            if (avaPoawrPoint && isPowerPoint) {
                 pptApp = new Microsoft.Office.Interop.PowerPoint.Application();
                 pptPres = pptApp.Presentations;
             }
@@ -408,14 +438,14 @@ namespace WindowsFormsApplication1 {
             procUnlock();
 
 #if (EXCEL)
-            if (isExcel) {
+            if (avaExcel && isExcel) {
                 if (xlBook != null)
                     xlBook = null;
                 xlApp.Quit();
             }
 #endif
 #if (WORD)
-            if (isWord) {
+            if (avaWord && isWord) {
                 if (docDocs != null)
                     docDocs = null;
                 ((Microsoft.Office.Interop.Word._Application)docApp).Quit();
@@ -423,14 +453,14 @@ namespace WindowsFormsApplication1 {
             }
 #endif
 #if (POWERPOINT)
-            if (isPowerPoint) {
+            if (avaPoawrPoint && isPowerPoint) {
                 if (pptPres != null)
                     pptPres = null;
                 pptApp.Quit();
             }
 #endif
 #if (PDF)
-            if (isPdf) {
+            if (avaPdf && isPdf) {
                 try {
                     pdfReader.Dispose();
                     pdfDoc.Dispose();
@@ -467,7 +497,7 @@ namespace WindowsFormsApplication1 {
                     /////////////////////////////////////////////////////////////
                     // Excel解錠
                     /////////////////////////////////////////////////////////////
-                    if (isExcel & dataGridView1.Rows[0].Cells[2].Value.ToString() == "Excel") {
+                    if (avaExcel & dataGridView1.Rows[0].Cells[2].Value.ToString() == "Excel") {
                         try {
                             xlBook = xlBooks.Open(dataGridView1.Rows[0].Cells[3].Value.ToString(),
                                 Type.Missing, Type.Missing, Type.Missing, "", "");
@@ -487,7 +517,7 @@ namespace WindowsFormsApplication1 {
                             } catch {
                                 label2.Text = WindowsFormsApplication1.Properties.Resources.message2;
                                 // "Password is incorrect.";
-                                xlBooks.Close();
+                               //  xlBooks.Close();
                                 return;
                             }
                             xlBook.Password = "";
@@ -507,7 +537,7 @@ namespace WindowsFormsApplication1 {
                     /////////////////////////////////////////////////////////
                     // Word解錠
                     /////////////////////////////////////////////////////////
-                    if (isWord & dataGridView1.Rows[0].Cells[2].Value.ToString() == "Word") {
+                    if (avaWord & dataGridView1.Rows[0].Cells[2].Value.ToString() == "Word") {
                         // 一時ファイル取得
                         tmpFilePath = Path.GetTempFileName();
                         try {
@@ -557,7 +587,7 @@ namespace WindowsFormsApplication1 {
                     /////////////////////////////////////////////////////
                     // PwerPoint解錠
                     /////////////////////////////////////////////////////
-                    if (isPowerPoint & dataGridView1.Rows[0].Cells[2].Value.ToString() == "PowerPoint") {
+                    if (avaPoawrPoint & dataGridView1.Rows[0].Cells[2].Value.ToString() == "PowerPoint") {
                         try {
                             pptPre = pptPres.Open(dataGridView1.Rows[0].Cells[3].Value.ToString() + ":: :: ",
                                 MsoTriState.msoFalse, MsoTriState.msoFalse, MsoTriState.msoFalse);
@@ -601,7 +631,7 @@ namespace WindowsFormsApplication1 {
                     ////////////////////////////////////////////////////
                     // PDF解錠
                     ////////////////////////////////////////////////////
-                    if (isPdf & dataGridView1.Rows[0].Cells[2].Value.ToString() == "PDF") {
+                    if (avaPdf & dataGridView1.Rows[0].Cells[2].Value.ToString() == "PDF") {
                         // 一時ファイル取得
                         tmpFilePath = Path.GetTempFileName();
                         isRP = false;
@@ -721,7 +751,7 @@ namespace WindowsFormsApplication1 {
                 return; // 同じファイルが登録済みなら、追加しない
 #if (EXCEL)
             // Excel
-            if (isExcel & (filePath.Substring(filePath.Length - 3) == "xls" | filePath.Substring(filePath.Length - 4, 3) == "xls")) {
+            if (avaExcel & (filePath.Substring(filePath.Length - 3) == "xls" | filePath.Substring(filePath.Length - 4, 3) == "xls")) {
                 // DataGridへExcel表追加
                 dataGridView1.Rows.Add();
                 idx = dataGridView1.Rows.Count - 1;
@@ -732,7 +762,7 @@ namespace WindowsFormsApplication1 {
 #endif
 #if (WORD)
             // Word
-            if (isWord & (filePath.Substring(filePath.Length - 3) == "doc" | filePath.Substring(filePath.Length - 4, 3) == "doc")) {
+            if (avaWord & (filePath.Substring(filePath.Length - 3) == "doc" | filePath.Substring(filePath.Length - 4, 3) == "doc")) {
                 // DataGridへWord追加
                 dataGridView1.Rows.Add();
                 idx = dataGridView1.Rows.Count - 1;
@@ -743,7 +773,7 @@ namespace WindowsFormsApplication1 {
 #endif
 #if (POWERPOINT)
             // PowerPoint
-            if (isPowerPoint & (filePath.Substring(filePath.Length - 3) == "ppt" | filePath.Substring(filePath.Length - 4, 3) == "ppt")) {
+            if (avaPoawrPoint & (filePath.Substring(filePath.Length - 3) == "ppt" | filePath.Substring(filePath.Length - 4, 3) == "ppt")) {
                 // DataGridへPowerPoint追加
                 dataGridView1.Rows.Add();
                 idx = dataGridView1.Rows.Count - 1;
@@ -754,7 +784,7 @@ namespace WindowsFormsApplication1 {
 #endif
 #if (PDF)
             // PDF
-            if (isPdf & (filePath.Substring(filePath.Length - 3) == "pdf")) {
+            if (avaPdf & (filePath.Substring(filePath.Length - 3) == "pdf")) {
                 // DataGridへPowerPoint追加
                 dataGridView1.Rows.Add();
                 idx = dataGridView1.Rows.Count - 1;
