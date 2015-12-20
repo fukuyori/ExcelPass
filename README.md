@@ -24,6 +24,14 @@ Workplace security has become important. It is required to set a password for th
 
 ![screenshot](https://pbs.twimg.com/media/CWVgL-BUsAA20H8.jpg)
 
+## Demo
+<object width="425" height="350">
+  <param name="movie" value="https://www.youtube.com/watch?v=8DlthBPhWNE" />
+  <param name="wmode" value="transparent" />
+  <embed src="https://www.youtube.com/watch?v=8DlthBPhWNE&feature=youtu.be"
+         type="application/x-shockwave-flash"
+         wmode="transparent" width="425" height="350" />
+</object>
 ## Licence
 
 Copyright (c) 2015 Sanda Systems
