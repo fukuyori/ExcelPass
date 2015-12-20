@@ -23,7 +23,7 @@ Workplace security has become important. It is required to set a password for th
 - Drag and drop files
 
 ## Demo
-[![screenshot](https://pbs.twimg.com/media/CWVgL-BUsAA20H8.jpg)](https://youtu.be/8DlthBPhWNE)
+[![screenshot](https://pbs.twimg.com/media/CWVgL-BUsAA20H8.jpg)](https://www.youtube.com/watch?v=ClDzzc0L-50)
 
 ## Licence
 
