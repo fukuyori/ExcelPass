@@ -190,4 +190,7 @@
   <data name="word3" xml:space="preserve">
     <value>This document is not applied password.</value>
   </data>
+  <data name="excel4" xml:space="preserve">
+    <value>This workbook's permission is set to shared with multi users.</value>
+  </data>
 </root>

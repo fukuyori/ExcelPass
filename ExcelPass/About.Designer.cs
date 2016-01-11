@@ -56,9 +56,9 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(41, 34);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(140, 12);
+            this.label3.Size = new System.Drawing.Size(137, 12);
             this.label3.TabIndex = 2;
-            this.label3.Text = " by Sanda Systems (2015)";
+            this.label3.Text = " by SPUMONI.ORG (2016)";
             // 
             // button1
             // 

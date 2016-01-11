@@ -29,10 +29,10 @@ Workplace security has become important. It is required to set a password for th
 ## Licence
 
 Copyright (c) 2015 Sanda Systems
-- [Released under the MIT license](https://opensource.org/licenses/MIT)
+  [Released under the MIT license]
 
 [iTextSharp](http://sourceforge.net/projects/itextsharp/)
-- Affero GNU Public License
+  Affero GNU Public License
 
 ## Author
 

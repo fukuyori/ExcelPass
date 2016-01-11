@@ -252,6 +252,15 @@ namespace WindowsFormsApplication1 {
                             xlBooks.Close();
                             return;
                         }
+                        // 共有ブックの保護
+                        if (xlBook.MultiUserEditing) {
+                            label2.Text = WindowsFormsApplication1.Properties.Resources.excel4;
+                            // "This workbook's permission is set to shared with multi users.";
+                            xlBook.Close(false);
+                            xlBooks.Close();
+                            return;
+                        }
+
                         if (textBox1.Text.Length > 0)
                             xlBook.Password = r_password;
                         if (textBox2.Text.Length > 0)
@@ -517,7 +526,15 @@ namespace WindowsFormsApplication1 {
                             } catch {
                                 label2.Text = WindowsFormsApplication1.Properties.Resources.message2;
                                 // "Password is incorrect.";
-                               //  xlBooks.Close();
+                                //  xlBooks.Close();
+                                return;
+                            }
+                            // 共有ブックの保護
+                            if (xlBook.MultiUserEditing) {
+                                label2.Text = WindowsFormsApplication1.Properties.Resources.excel4;
+                                // "This workbook's permission is set to shared with multi users.";
+                                xlBook.Close(false);
+                                xlBooks.Close();
                                 return;
                             }
                             xlBook.Password = "";

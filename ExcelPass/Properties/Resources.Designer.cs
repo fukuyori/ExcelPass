@@ -127,6 +127,15 @@ namespace WindowsFormsApplication1.Properties {
         }
         
         /// <summary>
+        ///   This workbook&apos;s permission is set to shared with multi users. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string excel4 {
+            get {
+                return ResourceManager.GetString("excel4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Please input password. に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string message1 {

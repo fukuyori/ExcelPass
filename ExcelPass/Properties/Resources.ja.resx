@@ -129,6 +129,9 @@
   <data name="excel3" xml:space="preserve">
     <value>ワークブックにパスワードが設定されていません。</value>
   </data>
+  <data name="excel4" xml:space="preserve">
+    <value>ワークブックが共有ブックとして設定されています。</value>
+  </data>
   <data name="message1" xml:space="preserve">
     <value>パスワードを入力してからボタンをクリックしてください。</value>
   </data>
