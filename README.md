@@ -28,12 +28,8 @@ Workplace security has become important. It is required to set a password for th
 [Play Youtube](https://www.youtube.com/watch?v=ClDzzc0L-50)
 ## Licence
 
-Copyright (c) 2015 Sanda Systems
+Copyright (c) 2015 SPUMONI.ORG
   [Released under the MIT license]
 
 [iTextSharp](http://sourceforge.net/projects/itextsharp/)
   Affero GNU Public License
-
-## Author
-
-[fukuyori](https://github.com/fukuyori)

@@ -193,4 +193,7 @@
   <data name="excel4" xml:space="preserve">
     <value>This workbook's permission is set to shared with multi users.</value>
   </data>
+  <data name="error2" xml:space="preserve">
+    <value>File is busy.</value>
+  </data>
 </root>

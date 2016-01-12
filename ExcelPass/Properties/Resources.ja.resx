@@ -120,6 +120,9 @@
   <data name="error1" xml:space="preserve">
     <value>保存に失敗しました。</value>
   </data>
+  <data name="error2" xml:space="preserve">
+    <value>ファイルが使用中です。</value>
+  </data>
   <data name="excel1" xml:space="preserve">
     <value>ワークブックに読取パスワードが設定されています。</value>
   </data>

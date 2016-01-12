@@ -116,6 +116,23 @@ namespace WindowsFormsApplication1 {
             }
         }
 
+        /// 指定されたファイルがロックされているかどうかを返します。
+        private bool IsFileLocked(string path) {
+            FileStream stream = null;
+
+            try {
+                stream = new FileStream(path, FileMode.Open, FileAccess.ReadWrite, FileShare.None);
+            } catch {
+                return true;
+            } finally {
+                if (stream != null) {
+                    stream.Close();
+                }
+            }
+
+            return false;
+        }
+
         //
         // 施錠開始
         //
@@ -142,6 +159,7 @@ namespace WindowsFormsApplication1 {
                 pptPres = pptApp.Presentations;
             }
 #endif
+            // 施錠処理
             procLock();
 
             // オブジェクトの開放
@@ -209,6 +227,7 @@ namespace WindowsFormsApplication1 {
             }
         }
 
+
         // 施錠処理
         private void procLock() {
             // パスワード設定
@@ -226,6 +245,11 @@ namespace WindowsFormsApplication1 {
                     dataGridView1.Rows[0].Cells[1].Style.ForeColor = Color.Red;
                     dataGridView1.Rows[0].Cells[2].Style.ForeColor = Color.Red;
                     dataGridView1.Rows[0].Cells[3].Style.ForeColor = Color.Red;
+
+                    if (IsFileLocked(dataGridView1.Rows[0].Cells[3].Value.ToString())) {
+                        label2.Text = WindowsFormsApplication1.Properties.Resources.error2;
+                        return;
+                    }
 #if (EXCEL)
                     ////////////////////////////////////////////////////////
                     // Excel施錠
@@ -502,6 +526,11 @@ namespace WindowsFormsApplication1 {
                     dataGridView1.Rows[0].Cells[1].Style.ForeColor = Color.Red;
                     dataGridView1.Rows[0].Cells[2].Style.ForeColor = Color.Red;
                     dataGridView1.Rows[0].Cells[3].Style.ForeColor = Color.Red;
+
+                    if (IsFileLocked(dataGridView1.Rows[0].Cells[3].Value.ToString())) {
+                        label2.Text = WindowsFormsApplication1.Properties.Resources.error2;
+                        return;
+                    }
 #if (EXCEL)
                     /////////////////////////////////////////////////////////////
                     // Excel解錠
