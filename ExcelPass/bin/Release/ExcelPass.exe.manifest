@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
-  <asmv1:assemblyIdentity name="ExcelPass.exe" version="1.5.2.1" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="x86" type="win32" />
+  <asmv1:assemblyIdentity name="ExcelPass.exe" version="1.6.2.1" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="x86" type="win32" />
   <description asmv2:iconFile="ExcelPass.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <application />
   <entryPoint>
-    <assemblyIdentity name="ExcelPass" version="1.5.2.1" language="neutral" processorArchitecture="x86" />
+    <assemblyIdentity name="ExcelPass" version="1.6.2.1" language="neutral" processorArchitecture="x86" />
     <commandLine file="ExcelPass.exe" parameters="" />
   </entryPoint>
   <trustInfo>
@@ -43,38 +43,50 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ExcelPass.exe" size="128512">
-      <assemblyIdentity name="ExcelPass" version="1.5.2.1" language="neutral" processorArchitecture="x86" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ExcelPass.exe" size="132608">
+      <assemblyIdentity name="ExcelPass" version="1.6.2.1" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>Dm839xVIKin+UeF2uiMqegmPkvo=</dsig:DigestValue>
+        <dsig:DigestValue>St/ZWd3PbwGVY/zQJUZ7gVH9KB4=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="en\ExcelPass.resources.dll" size="24064">
-      <assemblyIdentity name="ExcelPass.resources" version="1.5.2.1" language="en" processorArchitecture="x86" />
+      <assemblyIdentity name="ExcelPass.resources" version="1.6.2.1" language="en" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>sqJ3Pjw5jRNkad6zMTCCd/RP6GE=</dsig:DigestValue>
+        <dsig:DigestValue>+9jImQ72RTd+D65+35eQTRxT1+8=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ja\ExcelPass.resources.dll" size="32256">
-      <assemblyIdentity name="ExcelPass.resources" version="1.5.2.1" language="ja" processorArchitecture="x86" />
+      <assemblyIdentity name="ExcelPass.resources" version="1.6.2.1" language="ja" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>LW0ofJ2XWa2ZC9nzG/fNHkFxBBA=</dsig:DigestValue>
+        <dsig:DigestValue>LkXdI/hDUvJ0bAbuTTqwuDAyHFQ=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ICSharpCode.SharpZipLib.dll" size="200704">
+      <assemblyIdentity name="ICSharpCode.SharpZipLib" version="0.86.0.518" publicKeyToken="1B03E6ACF1164F73" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <dsig:DigestValue>ep35wl1JaQtqPEUWB9MRqGaxMfQ=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -97,15 +109,6 @@
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
       <dsig:DigestValue>Dihx1AxWOs/Mrkff23T9cQCwLUE=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="Resources\acrobat.png" size="731">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>EiDSEnhf0A1xu0XQxyyUxm8/Kv4=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Resources\excel.png" size="489">

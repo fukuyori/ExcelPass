@@ -72,6 +72,7 @@
             this.Pic_Excel = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.Pic_Zip = new System.Windows.Forms.PictureBox();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.contextMenuStrip3.SuspendLayout();
@@ -82,6 +83,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.Pic_Excel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pic_Zip)).BeginInit();
             this.SuspendLayout();
             // 
             // textBox1
@@ -93,7 +95,6 @@
             // 
             // contextMenuStrip1
             // 
-            resources.ApplyResources(this.contextMenuStrip1, "contextMenuStrip1");
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.createPasswordToolStripMenuItem,
             this.toolStripSeparator1,
@@ -101,35 +102,35 @@
             this.copyToolStripMenuItem,
             this.pasteToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.toolTip1.SetToolTip(this.contextMenuStrip1, resources.GetString("contextMenuStrip1.ToolTip"));
+            resources.ApplyResources(this.contextMenuStrip1, "contextMenuStrip1");
             // 
             // createPasswordToolStripMenuItem
             // 
-            resources.ApplyResources(this.createPasswordToolStripMenuItem, "createPasswordToolStripMenuItem");
             this.createPasswordToolStripMenuItem.Name = "createPasswordToolStripMenuItem";
+            resources.ApplyResources(this.createPasswordToolStripMenuItem, "createPasswordToolStripMenuItem");
             this.createPasswordToolStripMenuItem.Click += new System.EventHandler(this.createPasswordToolStripMenuItem1_Click);
             // 
             // toolStripSeparator1
             // 
-            resources.ApplyResources(this.toolStripSeparator1, "toolStripSeparator1");
             this.toolStripSeparator1.Name = "toolStripSeparator1";
+            resources.ApplyResources(this.toolStripSeparator1, "toolStripSeparator1");
             // 
             // clearToolStripMenuItem
             // 
-            resources.ApplyResources(this.clearToolStripMenuItem, "clearToolStripMenuItem");
             this.clearToolStripMenuItem.Name = "clearToolStripMenuItem";
+            resources.ApplyResources(this.clearToolStripMenuItem, "clearToolStripMenuItem");
             this.clearToolStripMenuItem.Click += new System.EventHandler(this.clearToolStripMenuItem1_Click);
             // 
             // copyToolStripMenuItem
             // 
-            resources.ApplyResources(this.copyToolStripMenuItem, "copyToolStripMenuItem");
             this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
+            resources.ApplyResources(this.copyToolStripMenuItem, "copyToolStripMenuItem");
             this.copyToolStripMenuItem.Click += new System.EventHandler(this.copyToolStripMenuItem1_Click);
             // 
             // pasteToolStripMenuItem
             // 
-            resources.ApplyResources(this.pasteToolStripMenuItem, "pasteToolStripMenuItem");
             this.pasteToolStripMenuItem.Name = "pasteToolStripMenuItem";
+            resources.ApplyResources(this.pasteToolStripMenuItem, "pasteToolStripMenuItem");
             this.pasteToolStripMenuItem.Click += new System.EventHandler(this.pasteToolStripMenuItem1_Click);
             // 
             // label1
@@ -145,22 +146,20 @@
             this.label2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Name = "label2";
-            this.toolTip1.SetToolTip(this.label2, resources.GetString("label2.ToolTip"));
             // 
             // label3
             // 
             resources.ApplyResources(this.label3, "label3");
             this.label3.Name = "label3";
-            this.toolTip1.SetToolTip(this.label3, resources.GetString("label3.ToolTip"));
             // 
             // dataGridView1
             // 
-            resources.ApplyResources(this.dataGridView1, "dataGridView1");
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(235)))), ((int)(((byte)(247)))));
             this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            resources.ApplyResources(this.dataGridView1, "dataGridView1");
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
@@ -190,7 +189,6 @@
             this.dataGridView1.RowTemplate.Height = 21;
             this.dataGridView1.RowTemplate.ReadOnly = true;
             this.dataGridView1.TabStop = false;
-            this.toolTip1.SetToolTip(this.dataGridView1, resources.GetString("dataGridView1.ToolTip"));
             this.dataGridView1.DragDrop += new System.Windows.Forms.DragEventHandler(this.dataGridView1_DragDrop);
             this.dataGridView1.DragEnter += new System.Windows.Forms.DragEventHandler(this.dataGridView1_DragEnter);
             this.dataGridView1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridView1_KeyDown);
@@ -228,34 +226,33 @@
             // 
             // contextMenuStrip3
             // 
-            resources.ApplyResources(this.contextMenuStrip3, "contextMenuStrip3");
             this.contextMenuStrip3.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.clearToolStripMenuItem2,
             this.clearAllToolStripMenuItem});
             this.contextMenuStrip3.Name = "contextMenuStrip3";
-            this.toolTip1.SetToolTip(this.contextMenuStrip3, resources.GetString("contextMenuStrip3.ToolTip"));
+            resources.ApplyResources(this.contextMenuStrip3, "contextMenuStrip3");
             // 
             // clearToolStripMenuItem2
             // 
-            resources.ApplyResources(this.clearToolStripMenuItem2, "clearToolStripMenuItem2");
             this.clearToolStripMenuItem2.Name = "clearToolStripMenuItem2";
+            resources.ApplyResources(this.clearToolStripMenuItem2, "clearToolStripMenuItem2");
             this.clearToolStripMenuItem2.Click += new System.EventHandler(this.clearToolStripMenuItem_Click);
             // 
             // clearAllToolStripMenuItem
             // 
-            resources.ApplyResources(this.clearAllToolStripMenuItem, "clearAllToolStripMenuItem");
             this.clearAllToolStripMenuItem.Name = "clearAllToolStripMenuItem";
+            resources.ApplyResources(this.clearAllToolStripMenuItem, "clearAllToolStripMenuItem");
             this.clearAllToolStripMenuItem.Click += new System.EventHandler(this.clearAllToolStripMenuItem_Click);
             // 
             // 一覧から削除ToolStripMenuItem
             // 
-            resources.ApplyResources(this.一覧から削除ToolStripMenuItem, "一覧から削除ToolStripMenuItem");
             this.一覧から削除ToolStripMenuItem.Name = "一覧から削除ToolStripMenuItem";
+            resources.ApplyResources(this.一覧から削除ToolStripMenuItem, "一覧から削除ToolStripMenuItem");
             // 
             // 一覧から全て削除ToolStripMenuItem
             // 
-            resources.ApplyResources(this.一覧から全て削除ToolStripMenuItem, "一覧から全て削除ToolStripMenuItem");
             this.一覧から全て削除ToolStripMenuItem.Name = "一覧から全て削除ToolStripMenuItem";
+            resources.ApplyResources(this.一覧から全て削除ToolStripMenuItem, "一覧から全て削除ToolStripMenuItem");
             // 
             // textBox2
             // 
@@ -266,7 +263,6 @@
             // 
             // contextMenuStrip2
             // 
-            resources.ApplyResources(this.contextMenuStrip2, "contextMenuStrip2");
             this.contextMenuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.createPasswordToolStripMenuItem1,
             this.toolStripSeparator2,
@@ -274,35 +270,35 @@
             this.copyToolStripMenuItem1,
             this.pasteToolStripMenuItem1});
             this.contextMenuStrip2.Name = "contextMenuStrip2";
-            this.toolTip1.SetToolTip(this.contextMenuStrip2, resources.GetString("contextMenuStrip2.ToolTip"));
+            resources.ApplyResources(this.contextMenuStrip2, "contextMenuStrip2");
             // 
             // createPasswordToolStripMenuItem1
             // 
-            resources.ApplyResources(this.createPasswordToolStripMenuItem1, "createPasswordToolStripMenuItem1");
             this.createPasswordToolStripMenuItem1.Name = "createPasswordToolStripMenuItem1";
+            resources.ApplyResources(this.createPasswordToolStripMenuItem1, "createPasswordToolStripMenuItem1");
             this.createPasswordToolStripMenuItem1.Click += new System.EventHandler(this.createPasswordToolStripMenuItem2_Click);
             // 
             // toolStripSeparator2
             // 
-            resources.ApplyResources(this.toolStripSeparator2, "toolStripSeparator2");
             this.toolStripSeparator2.Name = "toolStripSeparator2";
+            resources.ApplyResources(this.toolStripSeparator2, "toolStripSeparator2");
             // 
             // clearToolStripMenuItem1
             // 
-            resources.ApplyResources(this.clearToolStripMenuItem1, "clearToolStripMenuItem1");
             this.clearToolStripMenuItem1.Name = "clearToolStripMenuItem1";
+            resources.ApplyResources(this.clearToolStripMenuItem1, "clearToolStripMenuItem1");
             this.clearToolStripMenuItem1.Click += new System.EventHandler(this.clearToolStripMenuItem2_Click);
             // 
             // copyToolStripMenuItem1
             // 
-            resources.ApplyResources(this.copyToolStripMenuItem1, "copyToolStripMenuItem1");
             this.copyToolStripMenuItem1.Name = "copyToolStripMenuItem1";
+            resources.ApplyResources(this.copyToolStripMenuItem1, "copyToolStripMenuItem1");
             this.copyToolStripMenuItem1.Click += new System.EventHandler(this.copyToolStripMenuItem2_Click);
             // 
             // pasteToolStripMenuItem1
             // 
-            resources.ApplyResources(this.pasteToolStripMenuItem1, "pasteToolStripMenuItem1");
             this.pasteToolStripMenuItem1.Name = "pasteToolStripMenuItem1";
+            resources.ApplyResources(this.pasteToolStripMenuItem1, "pasteToolStripMenuItem1");
             this.pasteToolStripMenuItem1.Click += new System.EventHandler(this.pasteToolStripMenuItem2_Click);
             // 
             // label4
@@ -338,8 +334,8 @@
             // 
             // btnLock
             // 
-            resources.ApplyResources(this.btnLock, "btnLock");
             this.btnLock.BackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(this.btnLock, "btnLock");
             this.btnLock.Name = "btnLock";
             this.toolTip1.SetToolTip(this.btnLock, resources.GetString("btnLock.ToolTip"));
             this.btnLock.UseVisualStyleBackColor = false;
@@ -347,57 +343,59 @@
             // 
             // Pic_Pdf
             // 
-            resources.ApplyResources(this.Pic_Pdf, "Pic_Pdf");
             this.Pic_Pdf.Image = global::WindowsFormsApplication1.Properties.Resources.acrobat;
+            resources.ApplyResources(this.Pic_Pdf, "Pic_Pdf");
             this.Pic_Pdf.Name = "Pic_Pdf";
             this.Pic_Pdf.TabStop = false;
-            this.toolTip1.SetToolTip(this.Pic_Pdf, resources.GetString("Pic_Pdf.ToolTip"));
             // 
             // Pic_PowerPoint
             // 
-            resources.ApplyResources(this.Pic_PowerPoint, "Pic_PowerPoint");
             this.Pic_PowerPoint.Image = global::WindowsFormsApplication1.Properties.Resources.powerpoint;
+            resources.ApplyResources(this.Pic_PowerPoint, "Pic_PowerPoint");
             this.Pic_PowerPoint.Name = "Pic_PowerPoint";
             this.Pic_PowerPoint.TabStop = false;
-            this.toolTip1.SetToolTip(this.Pic_PowerPoint, resources.GetString("Pic_PowerPoint.ToolTip"));
             // 
             // Pic_Word
             // 
-            resources.ApplyResources(this.Pic_Word, "Pic_Word");
             this.Pic_Word.Image = global::WindowsFormsApplication1.Properties.Resources.word;
+            resources.ApplyResources(this.Pic_Word, "Pic_Word");
             this.Pic_Word.Name = "Pic_Word";
             this.Pic_Word.TabStop = false;
-            this.toolTip1.SetToolTip(this.Pic_Word, resources.GetString("Pic_Word.ToolTip"));
             // 
             // Pic_Excel
             // 
-            resources.ApplyResources(this.Pic_Excel, "Pic_Excel");
             this.Pic_Excel.Image = global::WindowsFormsApplication1.Properties.Resources.excel;
+            resources.ApplyResources(this.Pic_Excel, "Pic_Excel");
             this.Pic_Excel.Name = "Pic_Excel";
             this.Pic_Excel.TabStop = false;
-            this.toolTip1.SetToolTip(this.Pic_Excel, resources.GetString("Pic_Excel.ToolTip"));
             // 
             // pictureBox2
             // 
-            resources.ApplyResources(this.pictureBox2, "pictureBox2");
             this.pictureBox2.Image = global::WindowsFormsApplication1.Properties.Resources.open3;
+            resources.ApplyResources(this.pictureBox2, "pictureBox2");
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.TabStop = false;
-            this.toolTip1.SetToolTip(this.pictureBox2, resources.GetString("pictureBox2.ToolTip"));
             // 
             // pictureBox1
             // 
-            resources.ApplyResources(this.pictureBox1, "pictureBox1");
             this.pictureBox1.Image = global::WindowsFormsApplication1.Properties.Resources.open3;
+            resources.ApplyResources(this.pictureBox1, "pictureBox1");
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.TabStop = false;
-            this.toolTip1.SetToolTip(this.pictureBox1, resources.GetString("pictureBox1.ToolTip"));
+            // 
+            // Pic_Zip
+            // 
+            this.Pic_Zip.Image = global::WindowsFormsApplication1.Properties.Resources.zip;
+            resources.ApplyResources(this.Pic_Zip, "Pic_Zip");
+            this.Pic_Zip.Name = "Pic_Zip";
+            this.Pic_Zip.TabStop = false;
             // 
             // Form1
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
+            this.Controls.Add(this.Pic_Zip);
             this.Controls.Add(this.Pic_Pdf);
             this.Controls.Add(this.Pic_PowerPoint);
             this.Controls.Add(this.Pic_Word);
@@ -416,7 +414,6 @@
             this.Controls.Add(this.btnRemove);
             this.Controls.Add(this.btnLock);
             this.Name = "Form1";
-            this.toolTip1.SetToolTip(this, resources.GetString("$this.ToolTip"));
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.contextMenuStrip1.ResumeLayout(false);
@@ -429,6 +426,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.Pic_Excel)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pic_Zip)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -475,6 +473,7 @@
         private System.Windows.Forms.ToolStripMenuItem 一覧から全て削除ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem clearToolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem clearAllToolStripMenuItem;
+        private System.Windows.Forms.PictureBox Pic_Zip;
     }
 }
 

@@ -163,6 +163,15 @@ namespace WindowsFormsApplication1.Properties {
         }
         
         /// <summary>
+        ///   It&apos;s possible to set only read-password as zip file. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string message3 {
+            get {
+                return ResourceManager.GetString("message3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
         internal static System.Drawing.Bitmap open3 {
@@ -173,7 +182,7 @@ namespace WindowsFormsApplication1.Properties {
         }
         
         /// <summary>
-        ///   This document has been password-protected. に類似しているローカライズされた文字列を検索します。
+        ///   This PDF file has been password-protected. に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string pdf1 {
             get {
@@ -182,7 +191,7 @@ namespace WindowsFormsApplication1.Properties {
         }
         
         /// <summary>
-        ///   This document is not applied password. に類似しているローカライズされた文字列を検索します。
+        ///   This PDF file is not applied password. に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string pdf2 {
             get {
@@ -191,7 +200,7 @@ namespace WindowsFormsApplication1.Properties {
         }
         
         /// <summary>
-        ///   This document has been user password-protected. に類似しているローカライズされた文字列を検索します。
+        ///   This PDF file has been user password-protected. に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string pdf3 {
             get {
@@ -200,7 +209,7 @@ namespace WindowsFormsApplication1.Properties {
         }
         
         /// <summary>
-        ///   This document has been owner password-protected. に類似しているローカライズされた文字列を検索します。
+        ///   This PDF file has been owner password-protected. に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string pdf4 {
             get {
@@ -300,6 +309,34 @@ namespace WindowsFormsApplication1.Properties {
         internal static string word3 {
             get {
                 return ResourceManager.GetString("word3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap zip {
+            get {
+                object obj = ResourceManager.GetObject("zip", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   This Zip file has been password-protected. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string zip1 {
+            get {
+                return ResourceManager.GetString("zip1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   This Zip file is not applied password. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string zip2 {
+            get {
+                return ResourceManager.GetString("zip2", resourceCulture);
             }
         }
     }

@@ -148,9 +148,6 @@
   <data name="contextMenuStrip1.Size" type="System.Drawing.Size, System.Drawing">
     <value>143, 98</value>
   </data>
-  <data name="contextMenuStrip1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="textBox1.ToolTip" xml:space="preserve">
     <value>読取パスワード(ユーザーパスワード)</value>
   </data>
@@ -170,9 +167,6 @@
   <data name="label2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="label2.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="label3.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -181,9 +175,6 @@
   </data>
   <data name="label3.Text" xml:space="preserve">
     <value>ファイル</value>
-  </data>
-  <data name="label3.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="Column2.HeaderText" xml:space="preserve">
     <value>ファイル名</value>
@@ -208,12 +199,6 @@
   </data>
   <data name="contextMenuStrip3.Size" type="System.Drawing.Size, System.Drawing">
     <value>120, 48</value>
-  </data>
-  <data name="contextMenuStrip3.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="dataGridView1.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="一覧から削除ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>148, 22</value>
@@ -250,9 +235,6 @@
   </data>
   <data name="contextMenuStrip2.Size" type="System.Drawing.Size, System.Drawing">
     <value>143, 98</value>
-  </data>
-  <data name="contextMenuStrip2.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="textBox2.ToolTip" xml:space="preserve">
     <value>書込パスワード(オーナーパスワード)</value>
@@ -316,38 +298,26 @@
   <data name="Pic_Pdf.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="Pic_Pdf.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="Pic_PowerPoint.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
-  </data>
-  <data name="Pic_PowerPoint.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="Pic_Word.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="Pic_Word.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="Pic_Excel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
-  </data>
-  <data name="Pic_Excel.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="pictureBox2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="pictureBox2.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="pictureBox1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="pictureBox1.ToolTip" xml:space="preserve">
-    <value />
+  <data name="Pic_Zip.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="Pic_Zip.Size" type="System.Drawing.Size, System.Drawing">
+    <value>25, 20</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -604,8 +574,5 @@
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=
 </value>
-  </data>
-  <data name="$this.ToolTip" xml:space="preserve">
-    <value />
   </data>
 </root>

@@ -141,17 +141,20 @@
   <data name="message2" xml:space="preserve">
     <value>パスワードが間違っています。</value>
   </data>
+  <data name="message3" xml:space="preserve">
+    <value>Zipファイルには読取パスワードのみ設定可能です。</value>
+  </data>
   <data name="pdf1" xml:space="preserve">
-    <value>文書にパスワードが設定されています。</value>
+    <value>PDFファイルにパスワードが設定されています。</value>
   </data>
   <data name="pdf2" xml:space="preserve">
-    <value>文書にパスワードが設定されていません。</value>
+    <value>PDFファイルにパスワードが設定されていません。</value>
   </data>
   <data name="pdf3" xml:space="preserve">
-    <value>文書にユーザーパスワードが設定されています。</value>
+    <value>PDFファイルにユーザーパスワードが設定されています。</value>
   </data>
   <data name="pdf4" xml:space="preserve">
-    <value>文書にオーナーパスワードが設定されています。</value>
+    <value>PDFファイルにオーナーパスワードが設定されています。</value>
   </data>
   <data name="powerpoint1" xml:space="preserve">
     <value>プレゼンテーションにパスワードが設定されています。</value>
@@ -167,5 +170,11 @@
   </data>
   <data name="word3" xml:space="preserve">
     <value>文書にパスワードが設定されていません。</value>
+  </data>
+  <data name="zip1" xml:space="preserve">
+    <value>Zipファイルにはパスワードが設定されています。</value>
+  </data>
+  <data name="zip2" xml:space="preserve">
+    <value>Zipファイルにはパスワードが設定されていません。</value>
   </data>
 </root>
