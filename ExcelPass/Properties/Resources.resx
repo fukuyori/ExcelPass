@@ -167,7 +167,7 @@
     <value>This PDF file has been password-protected.</value>
   </data>
   <data name="pdf2" xml:space="preserve">
-    <value>This PDF file is not applied password.</value>
+    <value>This PDF file does not have an applied password</value>
   </data>
   <data name="pdf3" xml:space="preserve">
     <value>This PDF file has been user password-protected.</value>
@@ -179,7 +179,7 @@
     <value>This presentation has been password-protected.</value>
   </data>
   <data name="powerpoint2" xml:space="preserve">
-    <value>This presentation is not applied password.</value>
+    <value>This presentation does not have an applied password.</value>
   </data>
   <data name="word1" xml:space="preserve">
     <value>This document has been read password-protected.</value>
@@ -188,7 +188,7 @@
     <value>This document has been write password-protected.</value>
   </data>
   <data name="word3" xml:space="preserve">
-    <value>This document is not applied password.</value>
+    <value>This document does not have an applied password.</value>
   </data>
   <data name="excel4" xml:space="preserve">
     <value>This workbook's permission is set to shared with multi users.</value>
@@ -206,6 +206,6 @@
     <value>This Zip file has been password-protected.</value>
   </data>
   <data name="zip2" xml:space="preserve">
-    <value>This Zip file is not applied password.</value>
+    <value>This Zip file does not have an applied password.</value>
   </data>
 </root>

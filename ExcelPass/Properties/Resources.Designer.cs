@@ -191,7 +191,7 @@ namespace WindowsFormsApplication1.Properties {
         }
         
         /// <summary>
-        ///   This PDF file is not applied password. に類似しているローカライズされた文字列を検索します。
+        ///   This PDF file does not have an applied password に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string pdf2 {
             get {
@@ -237,7 +237,7 @@ namespace WindowsFormsApplication1.Properties {
         }
         
         /// <summary>
-        ///   This presentation is not applied password. に類似しているローカライズされた文字列を検索します。
+        ///   This presentation does not have an applied password. に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string powerpoint2 {
             get {
@@ -304,7 +304,7 @@ namespace WindowsFormsApplication1.Properties {
         }
         
         /// <summary>
-        ///   This document is not applied password. に類似しているローカライズされた文字列を検索します。
+        ///   This document does not have an applied password. に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string word3 {
             get {
@@ -332,7 +332,7 @@ namespace WindowsFormsApplication1.Properties {
         }
         
         /// <summary>
-        ///   This Zip file is not applied password. に類似しているローカライズされた文字列を検索します。
+        ///   This Zip file does not have an applied password. に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string zip2 {
             get {
