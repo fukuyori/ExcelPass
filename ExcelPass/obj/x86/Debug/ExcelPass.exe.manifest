@@ -43,14 +43,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ExcelPass.exe" size="135168">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ExcelPass.exe" size="137728">
       <assemblyIdentity name="ExcelPass" version="1.7.2.1" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>lP7u/cvhft19ODIqiHpK4iZ5w/A=</dsig:DigestValue>
+        <dsig:DigestValue>lSFHUuFQSCmxPyiJQTAWqhVmJEw=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -62,7 +62,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>01NyMKBADzmaBr6TepVenMSUXN4=</dsig:DigestValue>
+        <dsig:DigestValue>u0FaC4AECsinNCY7Pc62ReJ128s=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -74,7 +74,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>DHmFpr90QStk7PV33hTSq7iGiVE=</dsig:DigestValue>
+        <dsig:DigestValue>iyJ9qdVGlsdtSPD0FvxusVfU5MA=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

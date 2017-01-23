@@ -3,8 +3,6 @@ using System.IO;
 using System.Drawing;
 using System.Windows.Forms;
 using Microsoft.Office.Core;
-using iTextSharp.text.pdf;
-using ICSharpCode.SharpZipLib.Zip;
 
 namespace WindowsFormsApplication1 {
     public partial class Form1 : Form {
@@ -50,10 +48,13 @@ namespace WindowsFormsApplication1 {
             ////////////////////////////////////////////////////////
             // Excel施錠
             ////////////////////////////////////////////////////////
+            string orgFileName = dataGridView1.Rows[0].Cells[3].Value.ToString();
+            string tmpFileName = Path.GetTempFileName() + Path.GetExtension(orgFileName);
+
             if (avaExcel) {
                 // 読み込みパスワードが設定されているかチェック
                 try {
-                    xlBook = xlBooks.Open(dataGridView1.Rows[0].Cells[3].Value.ToString(),
+                    xlBook = xlBooks.Open(orgFileName,
                         Type.Missing, true, Type.Missing, "");
                 } catch {
                     label2.Text = WindowsFormsApplication1.Properties.Resources.excel1;
@@ -64,7 +65,7 @@ namespace WindowsFormsApplication1 {
 
                 // 書き込みパスワードが設定されているかチェック
                 try {
-                    xlBook = xlBooks.Open(dataGridView1.Rows[0].Cells[3].Value.ToString(),
+                    xlBook = xlBooks.Open(orgFileName,
                         Type.Missing, Type.Missing, Type.Missing, "", "");
                 } catch {
                     label2.Text = WindowsFormsApplication1.Properties.Resources.excel2;
@@ -81,19 +82,46 @@ namespace WindowsFormsApplication1 {
                     return false;
                 }
 
-                if (textBox1.Text.Length > 0)
-                    xlBook.Password = r_password;
-                if (textBox2.Text.Length > 0)
-                    xlBook.WritePassword = w_password;
-                xlBook.CheckCompatibility = false;
+
+                if (textBox1.Text.Length > 0 & textBox2.Text.Length > 0) {
+                    // Read Pass and Write Pass
+                    try {
+                        xlBook.SaveAs(tmpFileName, xlBook.FileFormat, r_password, w_password, xlBook.ReadOnlyRecommended);
+                    } catch (Exception eX) {
+                        label2.Text = WindowsFormsApplication1.Properties.Resources.error1 + eX.Message;
+                        //"Saving failed." + eX.Message;
+                        return false;
+                    }
+                } else if (textBox1.Text.Length > 0) {
+                    // Read Pass
+                    try {
+                        xlBook.SaveAs(tmpFileName, xlBook.FileFormat, r_password, Type.Missing, xlBook.ReadOnlyRecommended);
+                    } catch (Exception eX) {
+                        label2.Text = WindowsFormsApplication1.Properties.Resources.error1 + eX.Message;
+                        //"Saving failed." + eX.Message;
+                        return false;
+                    }
+                } else if (textBox2.Text.Length > 0) {
+                    // Write Pass
+                    try {
+                        xlBook.SaveAs(tmpFileName, xlBook.FileFormat, Type.Missing, w_password, xlBook.ReadOnlyRecommended);
+                    } catch (Exception eX) {
+                        label2.Text = WindowsFormsApplication1.Properties.Resources.error1 + eX.Message;
+                        //"Saving failed." + eX.Message;
+                        return false;
+                    }
+                }
+
+                xlBooks.Close();
+
                 try {
-                    xlBook.Save();
+                    System.IO.File.Copy(tmpFileName,orgFileName, true);
+                    System.IO.File.Delete(tmpFileName);
                 } catch (Exception eX) {
                     label2.Text = WindowsFormsApplication1.Properties.Resources.error1 + eX.Message;
-                    //"Saving failed." + eX.Message;
+                    // "Saving failed." + eX.Message;
                     return false;
                 }
-                xlBooks.Close();
             }
             return true;
         }

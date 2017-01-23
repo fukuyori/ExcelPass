@@ -2,9 +2,6 @@
 using System.IO;
 using System.Drawing;
 using System.Windows.Forms;
-using Microsoft.Office.Core;
-using iTextSharp.text.pdf;
-using ICSharpCode.SharpZipLib.Zip;
 
 namespace WindowsFormsApplication1 {
     public partial class Form1 : Form {
@@ -324,7 +321,7 @@ namespace WindowsFormsApplication1 {
 
         // DataGridViewへファイル追加
         private void addDataGridView(string filePath) {
-            int idx;
+ 
             // 同じファイルがあったら、追加しない
             Boolean SAMEFILE = false;
             foreach (DataGridViewRow row in dataGridView1.Rows) {

@@ -1,10 +1,7 @@
 ﻿using System;
 using System.IO;
-using System.Drawing;
 using System.Windows.Forms;
 using Microsoft.Office.Core;
-using iTextSharp.text.pdf;
-using ICSharpCode.SharpZipLib.Zip;
 
 namespace WindowsFormsApplication1 {
     public partial class Form1 : Form {
