@@ -300,17 +300,28 @@ namespace WindowsFormsApplication1 {
         // ファイルがドロップされた時の処理
         //
         private void dataGridView1_DragDrop(object sender, DragEventArgs e) {
+            System.IO.FileAttributes fattr;
+
             // ファイルが渡されていなければ、何もしない
             if (!e.Data.GetDataPresent(DataFormats.FileDrop))
                 return;
 
             foreach (var filePath in (string[])e.Data.GetData(DataFormats.FileDrop)) {
-                addDataGridView(filePath);
+                if (System.IO.File.Exists(filePath) == true)
+                    addDataGridView(filePath);
+                else if (System.IO.Directory.Exists(filePath) == true)
+                    // フォルダー内のファイルをすべて
+                    foreach (string stFilePath in System.IO.Directory.GetFiles(filePath, "*", System.IO.SearchOption.AllDirectories))
+                        if ((System.IO.File.GetAttributes(stFilePath) & System.IO.FileAttributes.Hidden) != System.IO.FileAttributes.Hidden)
+                            addDataGridView(stFilePath);
             }
-            dataGridView1.Rows[0].Cells[0].Style.ForeColor = Color.Black;
-            dataGridView1.Rows[0].Cells[1].Style.ForeColor = Color.Black;
-            dataGridView1.Rows[0].Cells[2].Style.ForeColor = Color.Black;
-            dataGridView1.Rows[0].Cells[3].Style.ForeColor = Color.Black;
+
+            if (dataGridView1.Rows.Count > 0) {
+                dataGridView1.Rows[0].Cells[0].Style.ForeColor = Color.Black;
+                dataGridView1.Rows[0].Cells[1].Style.ForeColor = Color.Black;
+                dataGridView1.Rows[0].Cells[2].Style.ForeColor = Color.Black;
+                dataGridView1.Rows[0].Cells[3].Style.ForeColor = Color.Black;
+            }
             label2.Text = "";
         }
 
@@ -402,9 +413,9 @@ namespace WindowsFormsApplication1 {
                 textBox1.Text = text;
             }
         }
-        // パスワード生成（10桁）
+        // パスワード生成（15桁）
         private void createPasswordToolStripMenuItem1_Click(object sender, EventArgs e) {
-            textBox1.Text = createPassword(10);
+            textBox1.Text = createPassword(15);
         }
 
         //
@@ -425,9 +436,9 @@ namespace WindowsFormsApplication1 {
                 textBox2.Text = text;
             }
         }
-        // パスワード生成（10桁）
+        // パスワード生成（15桁）
         private void createPasswordToolStripMenuItem2_Click(object sender, EventArgs e) {
-            textBox2.Text = createPassword(10);
+            textBox2.Text = createPassword(15);
         }
 
         // パスワード作成処理

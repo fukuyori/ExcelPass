@@ -575,4 +575,7 @@
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=
 </value>
   </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>（最大１５文字）</value>
+  </data>
 </root>
