@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="done" xml:space="preserve">
+    <value>処理終了</value>
+  </data>
   <data name="error1" xml:space="preserve">
     <value>保存に失敗しました。</value>
   </data>

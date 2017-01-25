@@ -75,6 +75,7 @@ namespace WindowsFormsApplication1 {
                     docDoc.WritePassword = w_password;
                 try {
                     docDoc.Save();
+                    docDoc.Close();
                 } catch (Exception eX) {
                     label2.Text = WindowsFormsApplication1.Properties.Resources.error1 + eX.Message;
                     // "Saving failed." + eX.Message;

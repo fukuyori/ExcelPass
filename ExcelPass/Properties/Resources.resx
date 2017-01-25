@@ -208,4 +208,7 @@
   <data name="zip2" xml:space="preserve">
     <value>This Zip file does not have an applied password.</value>
   </data>
+  <data name="done" xml:space="preserve">
+    <value>Processing is finished.</value>
+  </data>
 </root>

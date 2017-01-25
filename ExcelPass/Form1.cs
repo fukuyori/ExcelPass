@@ -2,6 +2,7 @@
 using System.IO;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Collections;
 
 namespace WindowsFormsApplication1 {
     public partial class Form1 : Form {
@@ -202,6 +203,9 @@ namespace WindowsFormsApplication1 {
 
                     dataGridView1.Rows.RemoveAt(0);
                 }
+                // 処理完了
+                label2.Text = WindowsFormsApplication1.Properties.Resources.done;
+
             } else {
                 label2.Text = WindowsFormsApplication1.Properties.Resources.message1;
                 //"Please input password.";
@@ -290,6 +294,9 @@ namespace WindowsFormsApplication1 {
 
                     dataGridView1.Rows.RemoveAt(0);
                 }
+                // 処理完了
+                label2.Text = WindowsFormsApplication1.Properties.Resources.done;
+
             } else {
                 label2.Text = WindowsFormsApplication1.Properties.Resources.message1;
                 // "Please input password.";
@@ -344,36 +351,147 @@ namespace WindowsFormsApplication1 {
             if (SAMEFILE)
                 return; // 同じファイルが登録済みなら、追加しない
 
-            // 拡張子３桁のファイル
             switch (filePath.Substring(filePath.Length - 3).ToUpper()) {
                 case "XLS":
-                    addExcel(filePath);
+                    if (isOle2File(filePath))
+                        addExcel(filePath);
                     break;
                 case "DOC":
-                    addWord(filePath);
+                    if (isOle2File(filePath))
+                        addWord(filePath);
                     break;
                 case "PPT":
-                    addPowerPoint(filePath);
+                    if (isOle2File(filePath))
+                        addPowerPoint(filePath);
                     break;
                 case "PDF":
-                    addPDF(filePath);
+                    if (isPdfFile(filePath))
+                        addPDF(filePath);
                     break;
                 case "ZIP":
-                    addZip(filePath);
+                    if (isZipFile(filePath))
+                        addZip(filePath);
                     break;
             }
             // 拡張子４桁のファイル
             switch (filePath.Substring(filePath.Length - 4, 3).ToUpper()) {
                 case "XLS":
-                    addExcel(filePath);
+                    if (isOpenXMLFile(filePath))
+                        addExcel(filePath);
                     break;
                 case "DOC":
-                    addWord(filePath);
+                    if (isOpenXMLFile(filePath))
+                        addWord(filePath);
                     break;
                 case "PPT":
-                    addPowerPoint(filePath);
+                    if (isOpenXMLFile(filePath))
+                        addPowerPoint(filePath);
                     break;
             }
+        }
+
+        // OLE2フォーマットのOffice文書か調べる (doc. xls, ppt)
+        private bool isOle2File(string filePath) {
+            byte[] sig = new byte[8] { 0xd0, 0xcf, 0x11, 0xe0, 0xa1, 0xb1, 0x1a, 0xe1 };
+
+            System.IO.FileStream fs = new System.IO.FileStream(
+                filePath,
+                FileMode.Open,
+                FileAccess.Read);
+
+            byte[] bs = new byte[sig.Length];
+
+            try {
+                fs.Read(bs, 0, bs.Length);
+            } catch {
+                fs.Close();
+                return false;
+            }
+
+            fs.Close();
+
+            //2つの配列が等しいか調べる
+            return ((IStructuralEquatable)sig).Equals(bs,
+                StructuralComparisons.StructuralEqualityComparer);
+        }
+
+        // Office2007以降のファイルかチェック (xlsx, docx, pptx)
+        private bool isOpenXMLFile(string filePath) {
+            byte[] sig1 = new byte[8] { 0xd0, 0xcf, 0x11, 0xe0, 0xa1, 0xb1, 0x1a, 0xe1 };
+            byte[] sig2 = new byte[8] { 0x50, 0x4b, 0x03, 0x04, 0x14, 0x00, 0x06, 0x00 };
+
+            System.IO.FileStream fs = new System.IO.FileStream(
+                filePath,
+                FileMode.Open,
+                FileAccess.Read);
+
+            byte[] bs = new byte[sig1.Length];
+
+            try {
+                fs.Read(bs, 0, bs.Length);
+            } catch {
+                fs.Close();
+                return false;
+            }
+
+            fs.Close();
+
+            //2つの配列が等しいか調べる
+            return
+                ((IStructuralEquatable)sig1).Equals(bs, StructuralComparisons.StructuralEqualityComparer)
+                | ((IStructuralEquatable)sig2).Equals(bs, StructuralComparisons.StructuralEqualityComparer);
+        }
+
+        // PDFファイルか確認
+        private bool isPdfFile(string filePath) {
+            byte[] sig = new byte[4] { 0x25, 0x50, 0x44, 0x46 }; //%PDF
+
+            System.IO.FileStream fs = new System.IO.FileStream(
+                filePath,
+                FileMode.Open,
+                FileAccess.Read);
+
+            byte[] bs = new byte[sig.Length];
+
+            try {
+                fs.Read(bs, 0, bs.Length);
+            } catch {
+                fs.Close();
+                return false;
+            }
+
+            fs.Close();
+
+            //2つの配列が等しいか調べる
+            return ((IStructuralEquatable)sig).Equals(bs,
+                StructuralComparisons.StructuralEqualityComparer);
+        }
+
+        // ZIP ファイルかチェック
+        private bool isZipFile(string filePath) {
+            System.IO.FileStream fs = new System.IO.FileStream(
+                filePath,
+                FileMode.Open,
+                FileAccess.Read);
+
+            //ZipInputStreamオブジェクトの作成
+            ICSharpCode.SharpZipLib.Zip.ZipInputStream zis =
+                new ICSharpCode.SharpZipLib.Zip.ZipInputStream(fs);
+
+            try {
+                ICSharpCode.SharpZipLib.Zip.ZipEntry ze;
+                while ((ze = zis.GetNextEntry()) != null) {
+                    //Console.WriteLine(ze.Name);
+                    fs.Close();
+                    return true;
+                }
+            } catch {
+                fs.Close();
+                return false;
+            }
+
+            fs.Close();
+            return false;
         }
 
         // 終了時にはガベージコレクションを実行

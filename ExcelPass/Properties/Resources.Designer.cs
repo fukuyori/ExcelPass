@@ -81,6 +81,15 @@ namespace WindowsFormsApplication1.Properties {
         }
         
         /// <summary>
+        ///   Processing is finished. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string done {
+            get {
+                return ResourceManager.GetString("done", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Saving failed. に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string error1 {
