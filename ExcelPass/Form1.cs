@@ -330,6 +330,7 @@ namespace WindowsFormsApplication1 {
                 dataGridView1.Rows[0].Cells[3].Style.ForeColor = Color.Black;
             }
             label2.Text = "";
+            label6.Text = dataGridView1.Rows.Count.ToString();
         }
 
         // ドラッグドロップ時にカーソルの形状を変更

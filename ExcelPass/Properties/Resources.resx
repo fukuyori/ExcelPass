@@ -209,6 +209,6 @@
     <value>This Zip file does not have an applied password.</value>
   </data>
   <data name="done" xml:space="preserve">
-    <value>Processing is finished.</value>
+    <value>Process complete.</value>
   </data>
 </root>

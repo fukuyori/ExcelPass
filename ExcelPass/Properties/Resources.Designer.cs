@@ -81,7 +81,7 @@ namespace WindowsFormsApplication1.Properties {
         }
         
         /// <summary>
-        ///   Processing is finished. に類似しているローカライズされた文字列を検索します。
+        ///   Process complete. に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string done {
             get {
