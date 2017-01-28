@@ -204,6 +204,8 @@ namespace WindowsFormsApplication1 {
                     dataGridView1.Rows.RemoveAt(0);
                 }
                 // 処理完了
+                label2.ForeColor = Color.Black;
+                label2.BackColor = SystemColors.Control;
                 label2.Text = WindowsFormsApplication1.Properties.Resources.done;
 
             } else {
@@ -295,6 +297,8 @@ namespace WindowsFormsApplication1 {
                     dataGridView1.Rows.RemoveAt(0);
                 }
                 // 処理完了
+                label2.ForeColor = Color.Black;
+                label2.BackColor = SystemColors.Control;
                 label2.Text = WindowsFormsApplication1.Properties.Resources.done;
 
             } else {
@@ -587,6 +591,18 @@ namespace WindowsFormsApplication1 {
         // 全消去
         private void clearAllToolStripMenuItem_Click(object sender, EventArgs e) {
             deleteAllDataGridView();
+        }
+
+        private void dataGridView1_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e) {
+            label6.Text = dataGridView1.Rows.Count.ToString();
+            label2.ForeColor = Color.White;
+            label2.BackColor = Color.Red;
+        }
+
+        private void dataGridView1_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e) {
+            label6.Text = dataGridView1.Rows.Count.ToString();
+            label2.ForeColor = Color.White;
+            label2.BackColor = Color.Red;
         }
     }
 }
