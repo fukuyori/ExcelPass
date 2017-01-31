@@ -42,7 +42,13 @@ namespace WindowsFormsApplication1 {
             string[] files = System.Environment.GetCommandLineArgs();
             if (files.Length > 1) {
                 for (int i = 1; i < files.Length; i++) {
-                    addDataGridView(files[i]);
+                    if (System.IO.File.Exists(files[i]) == true)
+                        addDataGridView(files[i]);
+                    else if (System.IO.Directory.Exists(files[i]) == true)
+                        // フォルダー内のファイルをすべて
+                        foreach (string stFilePath in System.IO.Directory.GetFiles(files[i], "*", System.IO.SearchOption.AllDirectories))
+                            if ((System.IO.File.GetAttributes(stFilePath) & System.IO.FileAttributes.Hidden) != System.IO.FileAttributes.Hidden)
+                                addDataGridView(stFilePath);
                 }
             }
         }
@@ -334,7 +340,6 @@ namespace WindowsFormsApplication1 {
                 dataGridView1.Rows[0].Cells[3].Style.ForeColor = Color.Black;
             }
             label2.Text = "";
-            label6.Text = dataGridView1.Rows.Count.ToString();
         }
 
         // ドラッグドロップ時にカーソルの形状を変更
